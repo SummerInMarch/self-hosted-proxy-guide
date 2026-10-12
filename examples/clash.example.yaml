@@ -1,0 +1,27 @@
+# 这是示例，必须替换域名和密码后才可使用；不要提交真实配置。
+mixed-port: 7897
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: warning
+ipv6: false
+proxies:
+  - name: My-Server
+    type: trojan
+    server: proxy.example.com
+    port: 8443
+    password: "REPLACE_WITH_YOUR_GENERATED_PASSWORD"
+    sni: proxy.example.com
+    skip-cert-verify: false
+    udp: true
+proxy-groups:
+  - name: My-Proxy
+    type: select
+    proxies: [My-Server, DIRECT]
+rules:
+  - DOMAIN,proxy.example.com,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - MATCH,My-Proxy

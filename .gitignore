@@ -1,0 +1,12 @@
+# 本机凭据、证书和实际部署产物不进入 Git。
+private/
+*.private.yaml
+*.private.json
+*.pem
+*.key
+*.p12
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.pytest_cache/
